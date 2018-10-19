@@ -1,246 +1,316 @@
-<!DOCTYPE HTML>
-<html class="no-js" lang="zh-CN">
-<!--
-//                            _ooOoo_
-//                           o8888888o
-//                           88" . "88
-//                           (| -_- |)
-//                            O\ = /O
-//                        ____/`---'\____
-//                      .   ' \\| |// `.
-//                       / \\||| : |||// \
-//                     / _||||| -:- |||||- \
-//                       | | \\\ - /// | |
-//                     | \_| ''\---/'' | |
-//                      \ .-\__ `-` ___/-. /
-//                   ___`. .' /--.--\ `. . __
-//                ."" '< `.___\_<|>_/___.' >'"".
-//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
-//                 \ \ `-. \_ __\ /__ _/ .-` / /
-//         ======`-.____`-.___\_____/___.-`____.-'======
-//                            `=---='
-//                 拦截插件累计拦截逗比攻击"1381438"次！
-//         .............................................
-//                  佛祖保佑             永无BUG
-//          佛曰:
-//                  写字楼里写字间，写字间里程序员；
-//                  程序人员写程序，又拿程序换酒钱。
-//                  酒醒只在网上坐，酒醉还来网下眠；
-//                  酒醉酒醒日复日，网上网下年复年。
-//                  但愿老死电脑间，不愿鞠躬老板前；
-//                  奔驰宝马贵者趣，公交自行程序员。
-//                  别人笑我忒疯癫，我笑自己命太贱；
-//                  不见满街漂亮妹，哪个归得程序员？
--->
+<!DOCTYPE html>
+<html>
 <head>
-    <!--[if lte IE 9]>
-<meta http-equiv="refresh" content="0;url=http://yoursite.com/warn.html">
-<![endif]-->
-<meta charset="utf-8">
+  <meta charset="utf-8">
+  
+  <title>hexo+github搭建个人博客 | Jerrvia&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="准备github repository新建一个仓库名称 repository name 设置为：用户名.github.io（eg：essencepei.github.io）必须选中Initialize this repository with a README 准备hexo在本地新建一个空文件夹 连接hexo 和 github page更换主题1、git clone https://github.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo+github搭建个人博客">
+<meta property="og:url" content="http://yoursite.com/2018/10/19/blog-test/index.html">
+<meta property="og:site_name" content="Jerrvia&#39;s Blog">
+<meta property="og:description" content="准备github repository新建一个仓库名称 repository name 设置为：用户名.github.io（eg：essencepei.github.io）必须选中Initialize this repository with a README 准备hexo在本地新建一个空文件夹 连接hexo 和 github page更换主题1、git clone https://github.">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-19T06:41:50.351Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo+github搭建个人博客">
+<meta name="twitter:description" content="准备github repository新建一个仓库名称 repository name 设置为：用户名.github.io（eg：essencepei.github.io）必须选中Initialize this repository with a README 准备hexo在本地新建一个空文件夹 连接hexo 和 github page更换主题1、git clone https://github.">
+  
+    <link rel="alternate" href="/atom.xml" title="Jerrvia&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
 
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
-<meta http-equiv="mobile-agent" content="format=html5; url=http://yoursite.com">
-<meta name="author" content="">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/SimpleStyle.min.css">
-
-<link rel="shortcut icon" href="/images/favicon.png">
-
-
-<title>hexo+github搭建个人博客 - Jerrvia&#39;s Blog</title>
-
-<meta name="keywords" content="">
-
-<meta name="description " content="">
 </head>
+
 <body>
-<div id="nav">
-    <nav class="nav-menu">
-        <a class="site-name current" href="/" title="说">说</a>
-        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>Home</span></a>
-        <a href="/archives" title="Archives"><i class="fa fa-archives"></i><span>Archives</span></a>
-        <a href="/tags" title="Tags"><i class="fa fa-tags"></i><span>Tags</span></a>
-        <!-- custom single page of menus -->
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
         
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a href="/help" title="帮助">
-            <i class="fa fa-question-circle"></i>
-            <span>帮助</span>
-        </a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
         
-    </nav>
-</div>
-
-<div class="nav-user">
-    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
-    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
-    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
-</div>
-
-<div id="wrapper" class="clearfix">
-    <div id="body">
-        <div class="main" id="main">
-            <div id="cover">
-    <div class="cover-img"></div>
-    <div class="cover-info">
+          <a class="main-nav-link" href="/">首页</a>
         
-        <h1 class="cover-siteName">说IT</h1>
-        <h3 class="cover-siteTitle">做产品，写代码</h3>
-        <p class="cover-siteDesc">一个关注技术与人文的IT博客</p>
-        <div class="cover-sns">
-            
-            <div class="btn btn-telegram">
-                <a href="http://t.me/kunyintang" target="_blank" title="telegram" ref="friend">
-                    <i class="fa fa-telegram"></i>
-                </a>
-            </div>
-            
-            <div class="btn btn-instagram">
-                <a href="https://www.instagram.com/mtangsir/" target="_blank" title="instagram" ref="friend">
-                    <i class="fa fa-instagram"></i>
-                </a>
-            </div>
-            
-            <div class="btn btn-twitter">
-                <a href="https://twitter.com/tangkunyin" target="_blank" title="twitter" ref="friend">
-                    <i class="fa fa-twitter"></i>
-                </a>
-            </div>
-            
-            <div class="btn btn-github">
-                <a href="https://github.com/tangkunyin" target="_blank" title="github" ref="friend">
-                    <i class="fa fa-github"></i>
-                </a>
-            </div>
-            
-        </div>
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
     </div>
-</div>
-            <div class="page-title">
-    <ul>
-        <li><a href="/">最新</a></li>
-        
-        
-        
-        <li class="page-search">
-    <form id="search" class="search-form">
-        <label for="s" class="sr-only">Input Search key Words Here</label>
-        <input class="search-field" type="text" name="s" class="text" placeholder="Input Search key Words Here" />
-        <button type="submit" class="search-form-submit" title="Search"><i class="fa fa-search"></i></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jerrvia&#39;s Blog</a>
+      </h1>
+      
     </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-</li>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-blog-test" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/19/blog-test/" class="article-date">
+  <time datetime="2018-10-19T01:58:04.000Z" itemprop="datePublished">2018-10-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hexo+github搭建个人博客
+    </h1>
+  
 
-    </ul>
-</div>
-<div class="main-inner">
-    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-        <div class="post-header">
-            <div class="post-author clearfix">
-                <a class="avatar fleft" href="" target="_blank">
-                    <img width="48" src="" alt="avatar"/>
-                </a>
-                <p><span class="label">作者</span>
-                    <a href="" target="_blank"></a>
-                    <span title="最后编辑于2018-10-19">2018-10-19</span>
-                </p>
-                <p></p>
-            </div>
-            <h2 class="post-title">hexo+github搭建个人博客</h2>
-            <div class="post-meta">
-                本文总共169个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
-            </div>
-        </div>
-        <div class="post-content markdown-body">
-            <h2 id="准备github-repository"><a href="#准备github-repository" class="headerlink" title="准备github repository"></a>准备github repository</h2><p>新建一个仓库名称 repository name 设置为：用户名.github.io（eg：essencepei.github.io）<br>必须选中Initialize this repository with a README</p>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="准备github-repository"><a href="#准备github-repository" class="headerlink" title="准备github repository"></a>准备github repository</h2><p>新建一个仓库名称 repository name 设置为：用户名.github.io（eg：essencepei.github.io）<br>必须选中Initialize this repository with a README</p>
 <h3 id="准备hexo"><a href="#准备hexo" class="headerlink" title="准备hexo"></a>准备hexo</h3><p>在本地新建一个空文件夹</p>
-<h3 id="连接hexo-和-github-page"><a href="#连接hexo-和-github-page" class="headerlink" title="连接hexo 和 github page"></a>连接hexo 和 github page</h3>
-        </div>
-        <div class="post-tool">
-            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
-                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
-            </a>
-        </div>
-        
-        <div class="post-tags">Tags：
-            
-        </div>
-        
-    </article>
-    
-    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
-    
-    
-</div>
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        </div><!-- end #main-->
-    </div><!-- end #body -->
-    <footer class="footer">
-    <div class="footer-inner">
-        <p>
-            <a href="/about"  title="About">About</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
-            <!-- 自定义链接 -->
-            <a href="/help" title="help" >急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
-            <a href="/links" title="友情链接">友情链接</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
-            <a href="/app" title="App下载">App下载</a>
-        </p>
-        <p>
-            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br/>
-            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
-            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
-            ，作者<a href="https://www.tangkunyin.com" target="_blank">唐先森</a>
-            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
-        </p>
-        
+<h3 id="连接hexo-和-github-page"><a href="#连接hexo-和-github-page" class="headerlink" title="连接hexo 和 github page"></a>连接hexo 和 github page</h3><h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3><p>1、git clone <a href="https://github.com/giscafer/hexo-theme-cafe.git" target="_blank" rel="noopener">https://github.com/giscafer/hexo-theme-cafe.git</a> themes/cafe  下载主题源码文件<br>2、修改博客配置文件 <code>_config.yml</code> 主题属性 theme 为 <code>cafe</code>.<br>3、cd themes/cafe<br>  git pull</p>
 
+      
     </div>
-</footer>
-<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-<script src="/js/InsightSearch.js"></script>
-<script src="/js/SimpleCore.js"></script>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/19/blog-test/" data-id="cjnfny4fc000074vrdadu73wf" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
 
-</div>
-<div class="fixed-btn">
-    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
-</div>
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/19/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备github-repository"><span class="toc-number">1.</span> <span class="toc-text">准备github repository</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备hexo"><span class="toc-number">1.1.</span> <span class="toc-text">准备hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连接hexo-和-github-page"><span class="toc-number">1.2.</span> <span class="toc-text">连接hexo 和 github page</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更换主题"><span class="toc-number">1.3.</span> <span class="toc-text">更换主题</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 Jerrvia&#39;s Blog&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;youemail@outlook.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
 <script>
-    $(function () {
-        SimpleCore.init({
-            buildingTime: '01/20/2018',
-            current: $('.post-tags').length > 0 ? 'post' : 'archive',
-            snsQRCode: '/images/sns-qrcode.png',
-            donateImg: '/images/donate-qr.png',
-        });
-    });
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
 </script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
 </body>
 </html>
