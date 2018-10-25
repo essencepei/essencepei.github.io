@@ -229,6 +229,128 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/25/Jmeter循环访问上个接口的返回结果/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jerrvia's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/25/Jmeter循环访问上个接口的返回结果/" itemprop="url">Jmeter循环访问上个接口的返回结果</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-25T16:26:40+08:00">
+                2018-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、接口A，添加后置处理器—-gt-循环控制器"><a href="#一、接口A，添加后置处理器—-gt-循环控制器" class="headerlink" title="一、接口A，添加后置处理器—&gt;循环控制器"></a>一、接口A，添加后置处理器—&gt;循环控制器</h2><p>使用正则表达式，获取返回参数列表中需要循环的数据<br>引用名称：pid<br>正则表达式：”platformId”:”(.+?)”,”label”<br>模板：$1$<br>匹配字符：-1</p>
+<h2 id="二、foreach循环控制器—-gt-接口B"><a href="#二、foreach循环控制器—-gt-接口B" class="headerlink" title="二、foreach循环控制器—&gt;接口B"></a>二、foreach循环控制器—&gt;接口B</h2><p>输入变量前缀：pid<br>输出变量名称：outdata</p>
+<h2 id="三、循环控制器内增加接口B"><a href="#三、循环控制器内增加接口B" class="headerlink" title="三、循环控制器内增加接口B"></a>三、循环控制器内增加接口B</h2><p>接口B需要循环访问参数化的地方${outdata}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/19/从一次失败的面试中得到的/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -756,7 +878,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
