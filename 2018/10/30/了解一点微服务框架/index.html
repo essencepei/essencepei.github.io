@@ -79,14 +79,17 @@
 
 
 
+<meta name="description" content="现在动辄就在谈微服务，由于我没有认真关注，对于我而言，服务端都一样，整体的还是独立的不会有多大的影响，然而就是因为这样的想法，导致对用的东西不了解，引起了一次失误，所以还是得对自己接触的东西至少有一个宏观的了解。 一、首先了解一下什么是微服务微服务（Microservices）是一种架构风格，一个大型复杂软件应用由一个或多个微服务组成。系统中的各个微服务可被独立部署，各个微服务之间是松耦合的。每个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从一次失败的面试中得到的">
-<meta property="og:url" content="http://yoursite.com/2018/10/19/从一次失败的面试中得到的/index.html">
+<meta property="og:title" content="了解一点微服务框架">
+<meta property="og:url" content="http://yoursite.com/2018/10/30/了解一点微服务框架/index.html">
 <meta property="og:site_name" content="Jerrvia&#39;s Blog">
+<meta property="og:description" content="现在动辄就在谈微服务，由于我没有认真关注，对于我而言，服务端都一样，整体的还是独立的不会有多大的影响，然而就是因为这样的想法，导致对用的东西不了解，引起了一次失误，所以还是得对自己接触的东西至少有一个宏观的了解。 一、首先了解一下什么是微服务微服务（Microservices）是一种架构风格，一个大型复杂软件应用由一个或多个微服务组成。系统中的各个微服务可被独立部署，各个微服务之间是松耦合的。每个">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-19T08:53:45.310Z">
+<meta property="og:updated_time" content="2018-10-30T02:08:11.084Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从一次失败的面试中得到的">
+<meta name="twitter:title" content="了解一点微服务框架">
+<meta name="twitter:description" content="现在动辄就在谈微服务，由于我没有认真关注，对于我而言，服务端都一样，整体的还是独立的不会有多大的影响，然而就是因为这样的想法，导致对用的东西不了解，引起了一次失误，所以还是得对自己接触的东西至少有一个宏观的了解。 一、首先了解一下什么是微服务微服务（Microservices）是一种架构风格，一个大型复杂软件应用由一个或多个微服务组成。系统中的各个微服务可被独立部署，各个微服务之间是松耦合的。每个">
 
 
 
@@ -116,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/19/从一次失败的面试中得到的/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/30/了解一点微服务框架/"/>
 
 
 
 
 
-  <title>从一次失败的面试中得到的 | Jerrvia's Blog</title>
+  <title>了解一点微服务框架 | Jerrvia's Blog</title>
   
 
 
@@ -229,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/19/从一次失败的面试中得到的/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/了解一点微服务框架/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -246,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">从一次失败的面试中得到的</h1>
+          <h1 class="post-title" itemprop="name headline">了解一点微服务框架</h1>
         
 
         <div class="post-meta">
@@ -258,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-19T16:53:45+08:00">
-                2018-10-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T09:48:32+08:00">
+                2018-10-30
               </time>
             
 
@@ -296,7 +299,13 @@
       
 
       
-        
+        <p>现在动辄就在谈微服务，由于我没有认真关注，对于我而言，服务端都一样，整体的还是独立的不会有多大的影响，然而就是因为这样的想法，导致对用的东西不了解，引起了一次失误，所以还是得对自己接触的东西至少有一个宏观的了解。</p>
+<h2 id="一、首先了解一下什么是微服务"><a href="#一、首先了解一下什么是微服务" class="headerlink" title="一、首先了解一下什么是微服务"></a>一、首先了解一下什么是微服务</h2><p>微服务（Microservices）是一种架构风格，一个大型复杂软件应用由一个或多个微服务组成。系统中的各个微服务可被独立部署，各个微服务之间是松耦合的。每个微服务仅关注于完成一件任务并很好地完成该任务。在所有情况下，每个任务代表着一个小的业务能力。<br>以往我们开发应用程序都是单体型，虽然开发和部署比较方便，但后期随着业务的不断增加，开发迭代和性能瓶颈等问题，将会困扰开发团队，微服务就是解决此问题的有效手段</p>
+<p>##二、两个微服务框架比较（dubbo  VS  spring cloud）</p>
+<p>看了一些文章后发现，dubbo是阿里的产品，而springcloud很明显，<br><a href="https://blog.csdn.net/u010664947/article/details/80007767" target="_blank" rel="noopener">引用文章链接</a></p>
+<p>##三、实例了解一下spring cloud</p>
+<p>由于我们公司用的spring cloud，</p>
+
       
     </div>
     
@@ -320,8 +329,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/19/记一次线上redis被删/" rel="next" title="记一次线上redis被删">
-                <i class="fa fa-chevron-left"></i> 记一次线上redis被删
+              <a href="/2018/10/30/appium安装问题记录/" rel="next" title="appium安装问题记录">
+                <i class="fa fa-chevron-left"></i> appium安装问题记录
               </a>
             
           </div>
@@ -329,10 +338,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/25/Jmeter循环访问上个接口的返回结果/" rel="prev" title="Jmeter循环访问上个接口的返回结果">
-                Jmeter循环访问上个接口的返回结果 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -384,8 +389,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -427,6 +441,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、首先了解一下什么是微服务"><span class="nav-number">1.</span> <span class="nav-text">一、首先了解一下什么是微服务</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
