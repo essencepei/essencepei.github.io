@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Jerrvia&#39;s Blog">
 <meta property="og:description" content="一、控制台appium命令报错报错信息:error: uncaughtException: Cannot find module ‘internal/fs’ date=Thu May 17 2018 20:39:28 GMT+0800 (中国标准时间), pid=8620, uid=null, gid=null, cwd=D:\appium\no 解决方法：更换nodejs版本 appium 1.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-30T01:29:37.200Z">
+<meta property="og:updated_time" content="2018-10-30T01:33:44.272Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="appium安装问题记录">
 <meta name="twitter:description" content="一、控制台appium命令报错报错信息:error: uncaughtException: Cannot find module ‘internal/fs’ date=Thu May 17 2018 20:39:28 GMT+0800 (中国标准时间), pid=8620, uid=null, gid=null, cwd=D:\appium\no 解决方法：更换nodejs版本 appium 1.">
@@ -305,6 +305,7 @@
 <h2 id="二、控制台各命令都正常，但appium快捷键无法打开UI界面，且进程中正常启动"><a href="#二、控制台各命令都正常，但appium快捷键无法打开UI界面，且进程中正常启动" class="headerlink" title="二、控制台各命令都正常，但appium快捷键无法打开UI界面，且进程中正常启动"></a>二、控制台各命令都正常，但appium快捷键无法打开UI界面，且进程中正常启动</h2><p>1、appium：<br>(node:8268) fs: re-evaluating native module sources is not supported. If you are using the graceful-fs module, please update it to a more recent version.<br>info: Welcome to Appium v1.4.16 (REV ae6877eff263066b26328d457bd285c0cc62430d)<br>info: Appium REST http interface listener started on 0.0.0.0:4723<br>info: Console LogLevel: debug</p>
 <p>2、appium-doctor：<br>Running Android Checks<br>✔ ANDROID_HOME is set to “E:\BaiduNetdiskDownload\android-sdk_r24.3.3-windows\android-sdk-windows”<br>✔ JAVA_HOME is set to “C:\Program Files\Java\jdk1.8.0_31.”<br>✔ ADB exists at E:\BaiduNetdiskDownload\android-sdk_r24.3.3-windows\android-sdk-windows\platform-tools\adb.exe<br>✔ Android exists at E:\BaiduNetdiskDownload\android-sdk_r24.3.3-windows\android-sdk-windows\tools\android.bat<br>✔ Emulator exists at E:\BaiduNetdiskDownload\android-sdk_r24.3.3-windows\android-sdk-windows\tools\emulator.exe<br>✔ Android Checks were successful.<br>✔ All Checks were successful</p>
 <p>解决办法：<br>检查appium-docotor命令下的安卓sdk里面指定的adb.exe android.bat emulator.exe是否存在，没有的话需要更换完整的sdk</p>
+<p>附:<br>appium各版本<a href="https://bitbucket.org/appium/appium.app/downloads/" target="_blank" rel="noopener">下载地址</a></p>
 
       
     </div>
