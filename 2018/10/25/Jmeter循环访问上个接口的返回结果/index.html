@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Jerrvia&#39;s Blog">
 <meta property="og:description" content="一、接口A，添加后置处理器—&amp;gt;循环控制器使用正则表达式，获取返回参数列表中需要循环的数据引用名称：pid正则表达式：”platformId”:”(.+?)”,”label”模板：$1$匹配字符：-1 二、foreach循环控制器—&amp;gt;接口B输入变量前缀：pid输出变量名称：outdata 三、循环控制器内增加接口B接口B需要循环访问参数化的地方${outdata} 以下为从jdbc请求返">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-02T06:11:51.817Z">
+<meta property="og:updated_time" content="2018-11-02T06:15:17.726Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jmeter循环访问上个接口的返回结果">
 <meta name="twitter:description" content="一、接口A，添加后置处理器—&amp;gt;循环控制器使用正则表达式，获取返回参数列表中需要循环的数据引用名称：pid正则表达式：”platformId”:”(.+?)”,”label”模板：$1$匹配字符：-1 二、foreach循环控制器—&amp;gt;接口B输入变量前缀：pid输出变量名称：outdata 三、循环控制器内增加接口B接口B需要循环访问参数化的地方${outdata} 以下为从jdbc请求返">
@@ -304,7 +304,7 @@
 <h2 id="三、循环控制器内增加接口B"><a href="#三、循环控制器内增加接口B" class="headerlink" title="三、循环控制器内增加接口B"></a>三、循环控制器内增加接口B</h2><p>接口B需要循环访问参数化的地方${outdata}</p>
 <p>以下为从jdbc请求返回结果循环访问</p>
 <h2 id="一、添加jdbc-connection-configuration"><a href="#一、添加jdbc-connection-configuration" class="headerlink" title="一、添加jdbc connection configuration"></a>一、添加jdbc connection configuration</h2><p>variable name：saas（自己取）</p>
-<p>Database URL:jdbc:mysql://106.14.238.126:3306/saas?allowMultiQueries=true（输入框，后面配置为支持多条语句查询）<br>JDBC Driver:com.mysql.jdbc.driver(下拉选择)<br>Username：root<br>Password：mima</p>
+<p>DatabaseURL:<br>jdbc:mysql://IP地址:3306/数据库名?allowMultiQueries=true（输入框，后面配置为支持多条语句查询）<br>JDBC Driver:com.mysql.jdbc.driver(下拉选择)<br>Username：root<br>Password：mima</p>
 <h2 id="二、添加jdbc-Request-Sampler"><a href="#二、添加jdbc-Request-Sampler" class="headerlink" title="二、添加jdbc Request Sampler"></a>二、添加jdbc Request Sampler</h2><p>1、Variable Name Bound to Pool的variable name 与jdbc连接配置自己取的name一致<br>2、variable names用做后续接口需要使用的变量名</p>
 <p>ps：如果要支持多条语句查询jdbc Request的QueryType选择为Callable Statement</p>
 <h2 id="三、添加计数器"><a href="#三、添加计数器" class="headerlink" title="三、添加计数器"></a>三、添加计数器</h2><p>1、引用名称：index（自己取）<br>作用：记录循环访问的接口每次取查询出来的结果的第几条结果</p>
