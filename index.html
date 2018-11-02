@@ -229,6 +229,127 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/idea建立appium项目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jerrvia's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/31/idea建立appium项目/" itemprop="url">idea建立appium项目</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-31T09:17:44+08:00">
+                2018-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、建立一个maven项目<br>2、添加appium客户端依赖<br>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"><br>    <modelversion>4.0.0</modelversion><br><br>    <groupid>app.test</groupid><br>    <artifactid>apptest</artifactid><br>    <version>1.0-SNAPSHOT</version><br><br>    <dependencies><br>        <dependency><br>            <groupid>io.appium</groupid><br>            <artifactid>java-client</artifactid><br>            <version>5.0.0-BETA9</version><br>            <scope>test</scope><br>        </dependency><br>    </dependencies><br><br><br></project>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/adb常用命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -547,13 +668,15 @@
       
         
           
-            <h2 id="一、控制台appium命令报错"><a href="#一、控制台appium命令报错" class="headerlink" title="一、控制台appium命令报错"></a>一、控制台appium命令报错</h2><p>报错信息:<br>error: uncaughtException: Cannot find module ‘internal/fs’ date=Thu May 17 2018 20:39:28 GMT+0800 (中国标准时间), pid=8620, uid=null, gid=null, cwd=D:\appium\no</p>
+            <p>appium-desktop<br><a href="https://github.com/appium/appium-desktop/releases" target="_blank" rel="noopener">下载地址</a><br><a href="http://www.testclass.net/appium/appium-base-desktop/" target="_blank" rel="noopener">有关文章</a></p>
+<h2 id="一、控制台appium命令报错"><a href="#一、控制台appium命令报错" class="headerlink" title="一、控制台appium命令报错"></a>一、控制台appium命令报错</h2><p>报错信息:<br>error: uncaughtException: Cannot find module ‘internal/fs’ date=Thu May 17 2018 20:39:28 GMT+0800 (中国标准时间), pid=8620, uid=null, gid=null, cwd=D:\appium\no</p>
 <p>解决方法：<br>更换nodejs版本</p>
 <p>appium 1.4.16.1<br>nodejs 6.9.5</p>
 <h2 id="二、控制台各命令都正常，但appium快捷键无法打开UI界面，且进程中正常启动"><a href="#二、控制台各命令都正常，但appium快捷键无法打开UI界面，且进程中正常启动" class="headerlink" title="二、控制台各命令都正常，但appium快捷键无法打开UI界面，且进程中正常启动"></a>二、控制台各命令都正常，但appium快捷键无法打开UI界面，且进程中正常启动</h2><p>1、appium：<br>(node:8268) fs: re-evaluating native module sources is not supported. If you are using the graceful-fs module, please update it to a more recent version.<br>info: Welcome to Appium v1.4.16 (REV ae6877eff263066b26328d457bd285c0cc62430d)<br>info: Appium REST http interface listener started on 0.0.0.0:4723<br>info: Console LogLevel: debug</p>
 <p>2、appium-doctor：<br>Running Android Checks<br>✔ ANDROID_HOME is set to “E:\BaiduNetdiskDownload\android-sdk_r24.3.3-windows\android-sdk-windows”<br>✔ JAVA_HOME is set to “C:\Program Files\Java\jdk1.8.0_31.”<br>✔ ADB exists at E:\BaiduNetdiskDownload\android-sdk_r24.3.3-windows\android-sdk-windows\platform-tools\adb.exe<br>✔ Android exists at E:\BaiduNetdiskDownload\android-sdk_r24.3.3-windows\android-sdk-windows\tools\android.bat<br>✔ Emulator exists at E:\BaiduNetdiskDownload\android-sdk_r24.3.3-windows\android-sdk-windows\tools\emulator.exe<br>✔ Android Checks were successful.<br>✔ All Checks were successful</p>
 <p>解决办法：<br>检查appium-docotor命令下的安卓sdk里面指定的adb.exe android.bat emulator.exe是否存在，没有的话需要更换完整的sdk</p>
 <p>附:<br>appium各版本<a href="https://bitbucket.org/appium/appium.app/downloads/" target="_blank" rel="noopener">下载地址</a></p>
+<p><a href="http://127.0.0.1:4723/wd/hub/session/5e97c726-e4be-40b8-a307-3bb01cfb6499" target="_blank" rel="noopener">http://127.0.0.1:4723/wd/hub/session/5e97c726-e4be-40b8-a307-3bb01cfb6499</a></p>
 
           
         
@@ -676,7 +799,15 @@
             <h2 id="一、接口A，添加后置处理器—-gt-循环控制器"><a href="#一、接口A，添加后置处理器—-gt-循环控制器" class="headerlink" title="一、接口A，添加后置处理器—&gt;循环控制器"></a>一、接口A，添加后置处理器—&gt;循环控制器</h2><p>使用正则表达式，获取返回参数列表中需要循环的数据<br>引用名称：pid<br>正则表达式：”platformId”:”(.+?)”,”label”<br>模板：$1$<br>匹配字符：-1</p>
 <h2 id="二、foreach循环控制器—-gt-接口B"><a href="#二、foreach循环控制器—-gt-接口B" class="headerlink" title="二、foreach循环控制器—&gt;接口B"></a>二、foreach循环控制器—&gt;接口B</h2><p>输入变量前缀：pid<br>输出变量名称：outdata</p>
 <h2 id="三、循环控制器内增加接口B"><a href="#三、循环控制器内增加接口B" class="headerlink" title="三、循环控制器内增加接口B"></a>三、循环控制器内增加接口B</h2><p>接口B需要循环访问参数化的地方${outdata}</p>
-
+<p>以下为从jdbc请求返回结果循环访问</p>
+<h2 id="一、添加jdbc-connection-configuration"><a href="#一、添加jdbc-connection-configuration" class="headerlink" title="一、添加jdbc connection configuration"></a>一、添加jdbc connection configuration</h2><p>variable name：saas（自己取）</p>
+<p>Database URL:jdbc:mysql://106.14.238.126:3306/saas?allowMultiQueries=true（输入框，后面配置为支持多条语句查询）<br>JDBC Driver:com.mysql.jdbc.driver(下拉选择)<br>Username：root<br>Password：mima</p>
+<h2 id="二、添加jdbc-Request-Sampler"><a href="#二、添加jdbc-Request-Sampler" class="headerlink" title="二、添加jdbc Request Sampler"></a>二、添加jdbc Request Sampler</h2><p>1、Variable Name Bound to Pool的variable name 与jdbc连接配置自己取的name一致<br>2、variable names用做后续接口需要使用的变量名</p>
+<p>ps：如果要支持多条语句查询jdbc Request的QueryType选择为Callable Statement</p>
+<h2 id="三、添加计数器"><a href="#三、添加计数器" class="headerlink" title="三、添加计数器"></a>三、添加计数器</h2><p>1、引用名称：index（自己取）<br>作用：记录循环访问的接口每次取查询出来的结果的第几条结果</p>
+<h2 id="四、需要循环访问接口设置"><a href="#四、需要循环访问接口设置" class="headerlink" title="四、需要循环访问接口设置"></a>四、需要循环访问接口设置</h2><p>1、取变量${__V(username_${index})}</p>
+<h2 id="五、添加循环控制器"><a href="#五、添加循环控制器" class="headerlink" title="五、添加循环控制器"></a>五、添加循环控制器</h2><p>1、循环次数控制，可以自行设置固定值，也可以从数据库查询总数${count_1}</p>
+<h2 id="六、把接口移动到循环控制器下"><a href="#六、把接口移动到循环控制器下" class="headerlink" title="六、把接口移动到循环控制器下"></a>六、把接口移动到循环控制器下</h2>
           
         
       
@@ -1132,7 +1263,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
