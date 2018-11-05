@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文转载原文点击现实企业级Java开发中，有时候我们会碰到下面这些问题： OutOfMemoryError，内存不足 内存泄露 线程死锁 锁争用（Lock Contention） Java进程消耗CPU过高 …… 这些问题在日常开发中可能被很多人忽视（比如有的人遇到上面的问题只是重启服务器或者调大内存，而不会深究问题根源），但能够理解并解决这些问题是Java程序员进阶的必备要求。本文将对一些常用的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="了解一点jvm性能调优监控工具">
+<meta property="og:url" content="http://yoursite.com/2018/11/05/了解一点jvm性能调优监控工具/index.html">
+<meta property="og:site_name" content="Jerrvia&#39;s Blog">
+<meta property="og:description" content="本文转载原文点击现实企业级Java开发中，有时候我们会碰到下面这些问题： OutOfMemoryError，内存不足 内存泄露 线程死锁 锁争用（Lock Contention） Java进程消耗CPU过高 …… 这些问题在日常开发中可能被很多人忽视（比如有的人遇到上面的问题只是重启服务器或者调大内存，而不会深究问题根源），但能够理解并解决这些问题是Java程序员进阶的必备要求。本文将对一些常用的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-05T03:48:33.956Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="了解一点jvm性能调优监控工具">
+<meta name="twitter:description" content="本文转载原文点击现实企业级Java开发中，有时候我们会碰到下面这些问题： OutOfMemoryError，内存不足 内存泄露 线程死锁 锁争用（Lock Contention） Java进程消耗CPU过高 …… 这些问题在日常开发中可能被很多人忽视（比如有的人遇到上面的问题只是重启服务器或者调大内存，而不会深究问题根源），但能够理解并解决这些问题是Java程序员进阶的必备要求。本文将对一些常用的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/05/了解一点jvm性能调优监控工具/"/>
+
+
+
+
+
+  <title>了解一点jvm性能调优监控工具 | Jerrvia's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jerrvia's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home 主页"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive 归档页"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/了解一点jvm性能调优监控工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jerrvia's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">了解一点jvm性能调优监控工具</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T11:46:58+08:00">
+                2018-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文转载<a href="https://my.oschina.net/feichexia/blog/196575" target="_blank" rel="noopener">原文点击</a><br>现实企业级Java开发中，有时候我们会碰到下面这些问题：</p>
+<p>OutOfMemoryError，内存不足</p>
+<p>内存泄露</p>
+<p>线程死锁</p>
+<p>锁争用（Lock Contention）</p>
+<p>Java进程消耗CPU过高</p>
+<p>……</p>
+<pre><code>这些问题在日常开发中可能被很多人忽视（比如有的人遇到上面的问题只是重启服务器或者调大内存，而不会深究问题根源），但能够理解并解决这些问题是Java程序员进阶的必备要求。本文将对一些常用的JVM性能调优监控工具进行介绍，希望能起抛砖引玉之用。本文参考了网上很多资料，难以一一列举，在此对这些资料的作者表示感谢！关于JVM性能调优相关的资料，请参考文末。
+A、 jps(Java Virtual Machine Process Status Tool)      
+
+jps主要用来输出JVM中运行的进程状态信息。语法格式如下：
+</code></pre><p>jps [options] [hostid]<br>    如果不指定hostid就默认为当前主机或服务器。</p>
+<pre><code>命令行参数选项说明如下：
+</code></pre><p>-q 不输出类名、Jar名和传入main方法的参数<br>-m 输出传入main方法的参数<br>-l 输出main类或Jar的全限名<br>-v 输出传入JVM的参数<br>   比如下面：</p>
+<p>root@ubuntu:/# jps -m -l<br>2458 org.artifactory.standalone.main.Main /usr/local/artifactory-2.2.5/etc/jetty.xml<br>29920 com.sun.tools.hat.Main -port 9998 /tmp/dump.dat<br>3149 org.apache.catalina.startup.Bootstrap start<br>30972 sun.tools.jps.Jps -m -l<br>8247 org.apache.catalina.startup.Bootstrap start<br>25687 com.sun.tools.hat.Main -port 9999 dump.dat<br>21711 mrf-center.jar</p>
+<p>B、 jstack</p>
+<pre><code>jstack主要用来查看某个Java进程内的线程堆栈信息。语法格式如下：
+</code></pre><p>jstack [option] pid<br>jstack [option] executable core<br>jstack [option] [server-id@]remote-hostname-or-ip<br>    命令行参数选项说明如下：</p>
+<p>-l long listings，会打印出额外的锁信息，在发生死锁时可以用jstack -l pid来观察锁持有情况<br>-m mixed mode，不仅会输出Java堆栈信息，还会输出C/C++堆栈信息（比如Native方法）<br>    jstack可以定位到线程堆栈，根据堆栈信息我们可以定位到具体代码，所以它在JVM性能调优中使用得非常多。下面我们来一个实例找出某个Java进程中最耗费CPU的Java线程并定位堆栈信息，用到的命令有ps、top、printf、jstack、grep。</p>
+<pre><code>第一步先找出Java进程ID，我部署在服务器上的Java应用名称为mrf-center：
+</code></pre><p>root@ubuntu:/# ps -ef | grep mrf-center | grep -v grep<br>root     21711     1  1 14:47 pts/3    00:02:10 java -jar mrf-center.jar<br>    得到进程ID为21711，第二步找出该进程内最耗费CPU的线程，可以使用ps -Lfp pid或者ps -mp pid -o THREAD, tid, time或者top -Hp pid，我这里用第三个，输出如下：</p>
+<pre><code>TIME列就是各个Java线程耗费的CPU时间，CPU时间最长的是线程ID为21742的线程，用
+</code></pre><p>printf “%x\n” 21742<br>    得到21742的十六进制值为54ee，下面会用到。    </p>
+<pre><code>OK，下一步终于轮到jstack上场了，它用来输出进程21711的堆栈信息，然后根据线程ID的十六进制值grep，如下：
+</code></pre><p>root@ubuntu:/# jstack 21711 | grep 54ee<br>“PollIntervalRetrySchedulerThread” prio=10 tid=0x00007f950043e000 nid=0x54ee in Object.wait() [0x00007f94c6eda000]<br>    可以看到CPU消耗在PollIntervalRetrySchedulerThread这个类的Object.wait()，我找了下我的代码，定位到下面的代码：</p>
+<p>// Idle wait<br>getLog().info(“Thread [“ + getName() + “] is idle waiting…”);<br>schedulerThreadState = PollTaskSchedulerThreadState.IdleWaiting;<br>long now = System.currentTimeMillis();<br>long waitTime = now + getIdleWaitTime();<br>long timeUntilContinue = waitTime - now;<br>synchronized(sigLock) {<br>    try {<br>        if(!halted.get()) {<br>            sigLock.wait(timeUntilContinue);<br>        }<br>    }<br>    catch (InterruptedException ignore) {<br>    }<br>}<br>    它是轮询任务的空闲等待代码，上面的sigLock.wait(timeUntilContinue)就对应了前面的Object.wait()。</p>
+<p>C、 jmap（Memory Map）和jhat（Java Heap Analysis Tool）</p>
+<pre><code>jmap用来查看堆内存使用状况，一般结合jhat使用。
+
+jmap语法格式如下：
+</code></pre><p>jmap [option] pid<br>jmap [option] executable core<br>jmap [option] [server-id@]remote-hostname-or-ip<br>    如果运行在64位JVM上，可能需要指定-J-d64命令选项参数。</p>
+<p>jmap -permstat pid<br>    打印进程的类加载器和类加载器加载的持久代对象信息，输出：类加载器名称、对象是否存活（不可靠）、对象地址、父类加载器、已加载的类大小等信息，如下图：</p>
+<p>   使用jmap -heap pid查看进程堆内存使用情况，包括使用的GC算法、堆配置参数和各代中堆内存使用情况。比如下面的例子：</p>
+<p>root@ubuntu:/# jmap -heap 21711<br>Attaching to process ID 21711, please wait…<br>Debugger attached successfully.<br>Server compiler detected.<br>JVM version is 20.10-b01</p>
+<p>using thread-local object allocation.<br>Parallel GC with 4 thread(s)</p>
+<p>Heap Configuration:<br>   MinHeapFreeRatio = 40<br>   MaxHeapFreeRatio = 70<br>   MaxHeapSize      = 2067791872 (1972.0MB)<br>   NewSize          = 1310720 (1.25MB)<br>   MaxNewSize       = 17592186044415 MB<br>   OldSize          = 5439488 (5.1875MB)<br>   NewRatio         = 2<br>   SurvivorRatio    = 8<br>   PermSize         = 21757952 (20.75MB)<br>   MaxPermSize      = 85983232 (82.0MB)</p>
+<p>Heap Usage:<br>PS Young Generation<br>Eden Space:<br>   capacity = 6422528 (6.125MB)<br>   used     = 5445552 (5.1932830810546875MB)<br>   free     = 976976 (0.9317169189453125MB)<br>   84.78829520089286% used<br>From Space:<br>   capacity = 131072 (0.125MB)<br>   used     = 98304 (0.09375MB)<br>   free     = 32768 (0.03125MB)<br>   75.0% used<br>To Space:<br>   capacity = 131072 (0.125MB)<br>   used     = 0 (0.0MB)<br>   free     = 131072 (0.125MB)<br>   0.0% used<br>PS Old Generation<br>   capacity = 35258368 (33.625MB)<br>   used     = 4119544 (3.9287033081054688MB)<br>   free     = 31138824 (29.69629669189453MB)<br>   11.683876009235595% used<br>PS Perm Generation<br>   capacity = 52428800 (50.0MB)<br>   used     = 26075168 (24.867218017578125MB)<br>   free     = 26353632 (25.132781982421875MB)<br>   49.73443603515625% used<br>   ….<br>    使用jmap -histo[:live] pid查看堆内存中的对象数目、大小统计直方图，如果带上live则只统计活对象，如下：</p>
+<p>root@ubuntu:/# jmap -histo:live 21711 | more</p>
+<h2 id="num-instances-bytes-class-name"><a href="#num-instances-bytes-class-name" class="headerlink" title=" num     #instances         #bytes  class name"></a> num     #instances         #bytes  class name</h2><p>   1:         38445        5597736  <constmethodklass><br>   2:         38445        5237288  <methodklass><br>   3:          3500        3749504  <constantpoolklass><br>   4:         60858        3242600  <symbolklass><br>   5:          3500        2715264  <instanceklassklass><br>   6:          2796        2131424  <constantpoolcacheklass><br>   7:          5543        1317400  [I<br>   8:         13714        1010768  [C<br>   9:          4752        1003344  [B<br>  10:          1225         639656  <methoddataklass><br>  11:         14194         454208  java.lang.String<br>  12:          3809         396136  java.lang.Class<br>  13:          4979         311952  [S<br>  14:          5598         287064  [[I<br>  15:          3028         266464  java.lang.reflect.Method<br>  16:           280         163520  <objarrayklassklass><br>  17:          4355         139360  java.util.HashMap$Entry<br>  18:          1869         138568  [Ljava.util.HashMap$Entry;<br>  19:          2443          97720  java.util.LinkedHashMap$Entry<br>  20:          2072          82880  java.lang.ref.SoftReference<br>  21:          1807          71528  [Ljava.lang.Object;<br>  22:          2206          70592  java.lang.ref.WeakReference<br>  23:           934          52304  java.util.LinkedHashMap<br>  24:           871          48776  java.beans.MethodDescriptor<br>  25:          1442          46144  java.util.concurrent.ConcurrentHashMap$HashEntry<br>  26:           804          38592  java.util.HashMap<br>  27:           948          37920  java.util.concurrent.ConcurrentHashMap$Segment<br>  28:          1621          35696  [Ljava.lang.Class;<br>  29:          1313          34880  [Ljava.lang.String;<br>  30:          1396          33504  java.util.LinkedList$Entry<br>  31:           462          33264  java.lang.reflect.Field<br>  32:          1024          32768  java.util.Hashtable$Entry<br>  33:           948          31440  [Ljava.util.concurrent.ConcurrentHashMap$HashEntry;<br>    class name是对象类型，说明如下：</objarrayklassklass></methoddataklass></constantpoolcacheklass></instanceklassklass></symbolklass></constantpoolklass></methodklass></constmethodklass></p>
+<p>B  byte<br>C  char<br>D  double<br>F  float<br>I  int<br>J  long<br>Z  boolean<br>[  数组，如[I表示int[]<br>[L+类名 其他对象<br>    还有一个很常用的情况是：用jmap把进程内存使用情况dump到文件中，再用jhat分析查看。jmap进行dump命令格式如下：</p>
+<p>jmap -dump:format=b,file=dumpFileName pid<br>    我一样地对上面进程ID为21711进行Dump：</p>
+<p>root@ubuntu:/# jmap -dump:format=b,file=/tmp/dump.dat 21711<br>Dumping heap to /tmp/dump.dat …<br>Heap dump file created<br>   dump出来的文件可以用MAT、VisualVM等工具查看，这里用jhat查看：</p>
+<p>root@ubuntu:/# jhat -port 9998 /tmp/dump.dat<br>Reading from /tmp/dump.dat…<br>Dump file created Tue Jan 28 17:46:14 CST 2014<br>Snapshot read, resolving…<br>Resolving 132207 objects…<br>Chasing references, expect 26 dots……………………..<br>Eliminating duplicate references……………………..<br>Snapshot resolved.<br>Started HTTP server on port 9998<br>Server is ready.<br>     注意如果Dump文件太大，可能需要加上-J-Xmx512m这种参数指定最大堆内存，即jhat -J-Xmx512m -port 9998 /tmp/dump.dat。然后就可以在浏览器中输入主机地址:9998查看了：</p>
+<pre><code>上面红线框出来的部分大家可以自己去摸索下，最后一项支持OQL（对象查询语言）。
+</code></pre><p>D、jstat（JVM统计监测工具）</p>
+<pre><code>语法格式如下：
+</code></pre><p>jstat [ generalOption | outputOptions vmid [interval[s|ms] [count]] ]<br>    vmid是Java虚拟机ID，在Linux/Unix系统上一般就是进程ID。interval是采样时间间隔。count是采样数目。比如下面输出的是GC信息，采样时间间隔为250ms，采样数为4：</p>
+<p>root@ubuntu:/# jstat -gc 21711 250 4<br> S0C    S1C    S0U    S1U      EC       EU        OC         OU       PC     PU    YGC     YGCT    FGC    FGCT     GCT<br>192.0  192.0   64.0   0.0    6144.0   1854.9   32000.0     4111.6   55296.0 25472.7    702    0.431   3      0.218    0.649<br>192.0  192.0   64.0   0.0    6144.0   1972.2   32000.0     4111.6   55296.0 25472.7    702    0.431   3      0.218    0.649<br>192.0  192.0   64.0   0.0    6144.0   1972.2   32000.0     4111.6   55296.0 25472.7    702    0.431   3      0.218    0.649<br>192.0  192.0   64.0   0.0    6144.0   2109.7   32000.0     4111.6   55296.0 25472.7    702    0.431   3      0.218    0.649<br>    要明白上面各列的意义，先看JVM堆内存布局：</p>
+<pre><code>可以看出：
+</code></pre><p>堆内存 = 年轻代 + 年老代 + 永久代<br>年轻代 = Eden区 + 两个Survivor区（From和To）<br>    现在来解释各列含义：</p>
+<p>S0C、S1C、S0U、S1U：Survivor 0/1区容量（Capacity）和使用量（Used）<br>EC、EU：Eden区容量和使用量<br>OC、OU：年老代容量和使用量<br>PC、PU：永久代容量和使用量<br>YGC、YGT：年轻代GC次数和GC耗时<br>FGC、FGCT：Full GC次数和Full GC耗时<br>GCT：GC总耗时</p>
+<p>E、hprof（Heap/CPU Profiling Tool）</p>
+<pre><code>hprof能够展现CPU使用率，统计堆内存使用情况。
+
+语法格式如下：
+</code></pre><p>java -agentlib:hprof[=options] ToBeProfiledClass<br>java -Xrunprof[:options] ToBeProfiledClass<br>javac -J-agentlib:hprof[=options] ToBeProfiledClass<br>    完整的命令选项如下：</p>
+<p>Option Name and Value  Description                    Default</p>
+<hr>
+<p>heap=dump|sites|all    heap profiling                 all<br>cpu=samples|times|old  CPU usage                      off<br>monitor=y|n            monitor contention             n<br>format=a|b             text(txt) or binary output     a<br>file=<file>            write data to file             java.hprof[.txt]<br>net=<host>:<port>      send data over a socket        off<br>depth=<size>           stack trace depth              4<br>interval=<ms>          sample interval in ms          10<br>cutoff=<value>         output cutoff point            0.0001<br>lineno=y|n             line number in traces?         y<br>thread=y|n             thread in traces?              n<br>doe=y|n                dump on exit?                  y<br>msa=y|n                Solaris micro state accounting n<br>force=y|n              force output to <file>         y<br>verbose=y|n            print messages about dumps     y<br>    来几个官方指南上的实例。</file></value></ms></size></port></host></file></p>
+<pre><code>CPU Usage Sampling Profiling(cpu=samples)的例子：
+</code></pre><p>java -agentlib:hprof=cpu=samples,interval=20,depth=3 Hello<br>    上面每隔20毫秒采样CPU消耗信息，堆栈深度为3，生成的profile文件名称是java.hprof.txt，在当前目录。 </p>
+<pre><code>CPU Usage Times Profiling(cpu=times)的例子，它相对于CPU Usage Sampling Profile能够获得更加细粒度的CPU消耗信息，能够细到每个方法调用的开始和结束，它的实现使用了字节码注入技术（BCI）：
+</code></pre><p>javac -J-agentlib:hprof=cpu=times Hello.java<br>    Heap Allocation Profiling(heap=sites)的例子：</p>
+<p>javac -J-agentlib:hprof=heap=sites Hello.java<br>    Heap Dump(heap=dump)的例子，它比上面的Heap Allocation Profiling能生成更详细的Heap Dump信息：</p>
+<p>javac -J-agentlib:hprof=heap=dump Hello.java<br>    虽然在JVM启动参数中加入-Xrunprof:heap=sites参数可以生成CPU/Heap Profile文件，但对JVM性能影响非常大，不建议在线上服务器环境使用。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/05/性能测试之需求建模/" rel="next" title="性能测试之需求建模">
+                <i class="fa fa-chevron-left"></i> 性能测试之需求建模
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#num-instances-bytes-class-name"><span class="nav-number">1.</span> <span class="nav-text"> num     #instances         #bytes  class name</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
