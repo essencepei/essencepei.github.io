@@ -229,6 +229,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/性能测试之需求建模/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jerrvia's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/05/性能测试之需求建模/" itemprop="url">性能测试之需求建模</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T11:38:02+08:00">
+                2018-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>某互联应用，预计推广群体达500万人左右，用户使用时间早8点—晚8点，12小时</p>
+<p>分析建模如下</p>
+<ol>
+<li><p>注册用户转化率，预估5%，那么注册用户：500万*5%=25万</p>
+</li>
+<li><p>高峰时段（有活动）每日在线用户，在线率预估10%，那么在线用户数：25万*10%=2.5万</p>
+</li>
+<li><p>用户常用下单到成功，触发20个请求，总请求量：2.5万*20=50万</p>
+</li>
+<li><p>利用二八原则计算吞吐量：50万<em>80%/(12</em>3600*20%)=46.7/s</p>
+</li>
+</ol>
+<p>更新需求，发布新产品，定时抢购优惠活动，某日10点开始抢购，大概12点结束</p>
+<p>重新建模如下</p>
+<ol>
+<li><p>注册用户25万不变</p>
+</li>
+<li><p>高峰时段在线用户，在线率预估20%，那么这2小时的在线用户数：25万*20%=5万</p>
+</li>
+<li><p>用户常用下单到成功，触发20个请求，总请求量：5万*20=100万</p>
+</li>
+<li><p>利用二八原则计算吞吐量：100万<em>80%/(2</em>3600*20%)=555.6/s </p>
+<p>   或许需要用到四六原则计算：100万<em>60%/(2</em>3600*40%)=208.3/s(需要非常熟悉业务需求，建模才更加准确，有往年历史数据支撑，看的出数据分布更好)</p>
+</li>
+</ol>
+<h2 id="压力暴增5-10多倍，这个时候老系统估计够呛了。。。"><a href="#压力暴增5-10多倍，这个时候老系统估计够呛了。。。" class="headerlink" title="压力暴增5~10多倍，这个时候老系统估计够呛了。。。"></a>压力暴增5~10多倍，这个时候老系统估计够呛了。。。</h2><p>作者：o蜗牛快跑o<br>来源：CSDN<br>原文：<a href="https://blog.csdn.net/musen518/article/details/50553689" target="_blank" rel="noopener">https://blog.csdn.net/musen518/article/details/50553689</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/idea建立appium项目/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -807,7 +952,10 @@
 <h2 id="三、添加计数器"><a href="#三、添加计数器" class="headerlink" title="三、添加计数器"></a>三、添加计数器</h2><p>1、引用名称：index（自己取）<br>作用：记录循环访问的接口每次取查询出来的结果的第几条结果</p>
 <h2 id="四、需要循环访问接口设置"><a href="#四、需要循环访问接口设置" class="headerlink" title="四、需要循环访问接口设置"></a>四、需要循环访问接口设置</h2><p>1、取变量${__V(username_${index})}</p>
 <h2 id="五、添加循环控制器"><a href="#五、添加循环控制器" class="headerlink" title="五、添加循环控制器"></a>五、添加循环控制器</h2><p>1、循环次数控制，可以自行设置固定值，也可以从数据库查询总数${count_1}</p>
-<h2 id="六、把接口移动到循环控制器下"><a href="#六、把接口移动到循环控制器下" class="headerlink" title="六、把接口移动到循环控制器下"></a>六、把接口移动到循环控制器下</h2>
+<h2 id="六、把接口移动到循环控制器下"><a href="#六、把接口移动到循环控制器下" class="headerlink" title="六、把接口移动到循环控制器下"></a>六、把接口移动到循环控制器下</h2><p>1、进入到jmeter的bin目录下<br>jmeter -n -t 造数据.jmx -l result000.jtl<br>2、运行完之后可以用图形化界面打开看执行结果</p>
+<p>jmeter -n -t 造数据.jmx -l result000.jtl -e -o result111 生成动态结果</p>
+<p>timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,<br>success,failureMessage,bytes,sentBytes,grpThreads,allThreads,Latency,IdleTime,Connect</p>
+
           
         
       
@@ -1263,7 +1411,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

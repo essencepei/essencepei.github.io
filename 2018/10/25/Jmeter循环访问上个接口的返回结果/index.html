@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Jerrvia&#39;s Blog">
 <meta property="og:description" content="一、接口A，添加后置处理器—&amp;gt;循环控制器使用正则表达式，获取返回参数列表中需要循环的数据引用名称：pid正则表达式：”platformId”:”(.+?)”,”label”模板：$1$匹配字符：-1 二、foreach循环控制器—&amp;gt;接口B输入变量前缀：pid输出变量名称：outdata 三、循环控制器内增加接口B接口B需要循环访问参数化的地方${outdata} 以下为从jdbc请求返">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-02T06:15:17.726Z">
+<meta property="og:updated_time" content="2018-11-02T08:42:54.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jmeter循环访问上个接口的返回结果">
 <meta name="twitter:description" content="一、接口A，添加后置处理器—&amp;gt;循环控制器使用正则表达式，获取返回参数列表中需要循环的数据引用名称：pid正则表达式：”platformId”:”(.+?)”,”label”模板：$1$匹配字符：-1 二、foreach循环控制器—&amp;gt;接口B输入变量前缀：pid输出变量名称：outdata 三、循环控制器内增加接口B接口B需要循环访问参数化的地方${outdata} 以下为从jdbc请求返">
@@ -310,7 +310,10 @@
 <h2 id="三、添加计数器"><a href="#三、添加计数器" class="headerlink" title="三、添加计数器"></a>三、添加计数器</h2><p>1、引用名称：index（自己取）<br>作用：记录循环访问的接口每次取查询出来的结果的第几条结果</p>
 <h2 id="四、需要循环访问接口设置"><a href="#四、需要循环访问接口设置" class="headerlink" title="四、需要循环访问接口设置"></a>四、需要循环访问接口设置</h2><p>1、取变量${__V(username_${index})}</p>
 <h2 id="五、添加循环控制器"><a href="#五、添加循环控制器" class="headerlink" title="五、添加循环控制器"></a>五、添加循环控制器</h2><p>1、循环次数控制，可以自行设置固定值，也可以从数据库查询总数${count_1}</p>
-<h2 id="六、把接口移动到循环控制器下"><a href="#六、把接口移动到循环控制器下" class="headerlink" title="六、把接口移动到循环控制器下"></a>六、把接口移动到循环控制器下</h2>
+<h2 id="六、把接口移动到循环控制器下"><a href="#六、把接口移动到循环控制器下" class="headerlink" title="六、把接口移动到循环控制器下"></a>六、把接口移动到循环控制器下</h2><p>1、进入到jmeter的bin目录下<br>jmeter -n -t 造数据.jmx -l result000.jtl<br>2、运行完之后可以用图形化界面打开看执行结果</p>
+<p>jmeter -n -t 造数据.jmx -l result000.jtl -e -o result111 生成动态结果</p>
+<p>timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,<br>success,failureMessage,bytes,sentBytes,grpThreads,allThreads,Latency,IdleTime,Connect</p>
+
       
     </div>
     
@@ -423,7 +426,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
